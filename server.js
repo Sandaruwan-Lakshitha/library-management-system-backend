@@ -9,6 +9,8 @@ const server = express();
 const dataBaseURL =
   "mongodb+srv://testUser:testUser123@cluster0.xaraf.mongodb.net/lms?retryWrites=true&w=majority";
 
+const PORT = process.env.port || 3000;
+
 mongoose
   .connect(dataBaseURL, {
     useNewUrlParser: true,
@@ -16,8 +18,8 @@ mongoose
   })
   .then((result) => {
     console.log("Connected to DB");
-    server.listen(3000, () => {
-      console.log("Server running on port 3000");
+    server.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
     });
   })
   .catch((error) => {
